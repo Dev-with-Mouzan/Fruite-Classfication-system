@@ -1,242 +1,208 @@
-# Fruit Classification API & Web Application ![Overview Icon](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/overview_icon_1780723762913.png)
+<p align="center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="48" fill="#f97316" opacity="0.15"/>
+    <circle cx="50" cy="50" r="42" fill="#f97316" opacity="0.3"/>
+    <circle cx="50" cy="50" r="36" fill="#22c55e" opacity="0.4"/>
+    <path d="M50 20 Q60 35 50 50 Q40 35 50 20Z" fill="#ef4444"/>
+    <path d="M40 30 Q30 40 35 50 Q45 40 40 30Z" fill="#facc15"/>
+    <path d="M60 28 Q68 36 62 46 Q55 36 60 28Z" fill="#f97316"/>
+    <ellipse cx="50" cy="58" rx="20" ry="16" fill="#22c55e"/>
+    <path d="M50 40 L50 60" stroke="#166534" stroke-width="2"/>
+    <path d="M50 50 L35 45" stroke="#166534" stroke-width="1.5"/>
+    <path d="M50 48 L62 42" stroke="#166534" stroke-width="1.5"/>
+  </svg>
+</p>
+
+<h1 align="center">Fruit Classification API & Web Application</h1>
+
+<p align="center">
+  <strong>Deep Learning fruit recognition with real-time nutritional insights</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-0.110-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow">
+  <img src="https://img.shields.io/badge/VGG16-Transfer%20Learning-673AB8?style=flat-square" alt="VGG16">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status">
+</p>
 
 ---
-
-## 📖 Overview
-This project delivers a **professional, production‑ready** machine‑learning web application that classifies fruit images and returns detailed nutritional information. Leveraging **Transfer Learning** with **VGG16** (via **TensorFlow/Keras**) the model achieves high accuracy across five fruit categories.
-
----
-
-## ⚙️ System Architecture ![Architecture Icon](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/architecture_icon_1780723778533.png)
-
-### Backend – FastAPI ![FastAPI](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/fastapi_icon_1780723924158.png)
-- High‑performance asynchronous API server
-- CORS middleware for seamless frontend integration
-- Image preprocessing with **Pillow** and **NumPy**
-
-### Model – TensorFlow/Keras ![TensorFlow](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/tensorflow_icon_1780723936855.png) ![Keras](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/keras_icon_1780723950911.png)
-- Transfer learning with **VGG16** backbone
-- Optimized loading via custom deserialization
-
-### Frontend – HTML/CSS/JavaScript ![HTML5](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/html5_icon_1780723957120.png) ![CSS3](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/css3_icon_1780723958258.png) ![JavaScript](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/javascript_icon_1780723959711.png)
-- Responsive UI for image upload and result display
-- Dynamic charts for probability distribution
-
----
-
-## 🛠️ Tech Stack ![Python](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/python_icon_1780723910547.png)
-| Category | Technology |
-|---|---|
-| **Language** | Python |
-| **Web Framework** | FastAPI |
-| **Server** | uvicorn |
-| **Deep Learning** | TensorFlow, Keras (VGG16) |
-| **Image Processing** | Pillow, NumPy |
-| **Frontend** | HTML5, CSS3, JavaScript |
-| **Version Control** | Git |
-| **Deployment (optional)** | Docker |
-
----
-
-## 📂 Project Structure
-```
-Fruite/
-├── frontend/               # Static web assets (HTML, CSS, JS)
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-├── Dataset/                # Raw & processed images
-├── transfer_model.keras    # Pre‑trained VGG16 weights
-├── main.py                 # FastAPI entry point
-├── requirements.txt        # Python dependencies
-└── README.md               # Documentation (this file)
-```
-
----
-
-## 🚀 Setup & Installation
-1. **Clone the repository**
-   ```bash
-   git clone <repo-url>
-   cd Fruite
-   ```
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate   # Windows
-   # or source .venv/bin/activate for Unix
-   ```
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Run the server**
-   ```bash
-   uvicorn main:app --reload
-   ```
-5. **Open the UI**: `http://localhost:8000/`
-
----
-
-## � API Endpoints
-- `GET /health` – Health check, returns `{ "status": "healthy", "model_loaded": true }`
-- `POST /predict` – Accepts an image file and returns:
-  ```json
-  {
-    "class": "Apple",
-    "confidence": 0.97,
-    "probabilities": {"Apple":0.97, "Banana":0.01, ...},
-    "nutrition": {"calories":52, "carbs":14, ...}
-  }
-  ```
-
----
-
-## 📊 Nutritional Data
-The API provides per‑100 g nutritional metrics for each fruit, including calories, carbs, fiber, sugars, protein, fat, and water.
-
----
-
-## 📚 Academic Relevance
-- **Computer Vision in Agriculture** – Automated fruit identification.
-- **Transfer Learning** – Demonstrates fine‑tuning of a pretrained CNN.
-- **Model Deployment** – Shows end‑to‑end pipeline from notebook training to production API.
-
----
-
-## 📜 License
-This project is licensed under the MIT License.
-
----
-
-*Created with ❤️ using Python, FastAPI, TensorFlow, and modern web technologies.* ![Overview Icon](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/overview_icon_1780723762913.png)
 
 ## Overview
-This project is an end-to-end Machine Learning web application designed to classify images of fruits and provide real-time nutritional information. Using Deep Learning (Convolutional Neural Networks and Transfer Learning with VGG16), the system can accurately identify five different classes of fruits and deliver essential dietary details to the user through an intuitive web interface.
 
-This repository contains the model training pipeline, the FastAPI backend server, and the web frontend.
+A production-grade machine learning web application that classifies fruit images and returns detailed nutritional data. Built on **transfer learning** with **VGG16**, the system achieves high accuracy across five fruit categories through a complete end-to-end pipeline — from model training to RESTful API deployment.
 
----
-
-## 🧠 Model Architecture & Methodology
-
-### Deep Learning Approach
-The core of this project relies on **Transfer Learning** using the **VGG16** architecture, a powerful Convolutional Neural Network (CNN) pre-trained on the ImageNet dataset. By leveraging VGG16, the model benefits from learned feature representations of millions of images, which significantly improves accuracy and reduces training time for our specific fruit classification task.
-
-### Classes
-The model has been trained to classify the following five fruits:
-1. Apple
-2. Banana
-3. Grape
-4. Mango
-5. Strawberry
-
-### Model Loading & Optimization
-The system uses a custom, robust deserialization method to load the pre-trained `transfer_model.keras`. This bypasses common Keras Sequential deserialization bugs, ensuring high availability and seamless integration between the deep learning model and the API backend.
+This repository contains the model training notebook, the FastAPI backend, and a responsive web frontend.
 
 ---
 
-## ⚙️ System Architecture ![Architecture Icon](file:///C:/Users/Mouzan%20Raza/.gemini/antigravity-ide/brain/73636887-661b-41e4-a4a7-8f9ebd88f9ca/architecture_icon_1780723778533.png)
+## Key Features
 
-### Backend: FastAPI
-The backend is built using **FastAPI**, providing a high-performance, asynchronous web server. 
-- **CORS Middleware**: Configured to allow cross-origin requests, ensuring the frontend can communicate seamlessly with the API.
-- **Image Processing**: Incoming image bytes are processed using `Pillow (PIL)` and `NumPy`. The images are resized to `256x256`, converted to RGB, normalized (scaled between 0 and 1), and expanded to include a batch dimension before being fed into the model.
-
-### Frontend: HTML/CSS/JS
-The frontend is a static web interface served directly by the FastAPI backend. It provides a user-friendly way to upload images and view:
-- The predicted fruit class.
-- The confidence score of the prediction.
-- A breakdown of all class probabilities.
-- Detailed nutritional information.
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> &nbsp;**Accurate Classification** — Identifies Apple, Banana, Grape, Mango, and Strawberry with high confidence  
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> &nbsp;**Nutritional Data** — Per-100g breakdown including calories, carbs, fiber, sugars, protein, fat, and water  
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> &nbsp;**Interactive Web UI** — Upload images and view predictions with probability distribution charts  
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> &nbsp;**FastAPI Backend** — Asynchronous, CORS-enabled, with auto-generated Swagger docs
 
 ---
 
-## 🍏 Nutritional Data Integration
-Beyond simple classification, this application serves as a dietary tool by returning estimated nutritional data (per 100g) for the predicted fruit. 
+## Tech Stack
 
-Tracked nutritional metrics include:
-- Calories (kcal)
-- Carbohydrates (g)
-- Dietary Fiber (g)
-- Sugars (g)
-- Protein (g)
-- Fat (g)
-- Water (g)
-
----
-
-## 🚀 API Endpoints
-
-### 1. `GET /health`
-Used to check the status of the server and verify if the deep learning model has been loaded successfully into memory.
-- **Response**: `{"status": "healthy", "model_loaded": true}`
-
-### 2. `POST /predict`
-The main inference endpoint. Expects a `multipart/form-data` request containing an image file.
-- **Input**: Image file (`UploadFile`)
-- **Output**: JSON payload containing the predicted class, confidence score, full probability distribution, and nutritional metadata.
+| Category | Technology |
+|---|---|
+| <img src="https://img.shields.io/badge/-Language-333?style=flat-square" alt=""> | **Python 3.8+** |
+| <img src="https://img.shields.io/badge/-Web%20Framework-333?style=flat-square" alt=""> | **FastAPI** with **Uvicorn** |
+| <img src="https://img.shields.io/badge/-Deep%20Learning-333?style=flat-square" alt=""> | **TensorFlow / Keras** — VGG16 Transfer Learning |
+| <img src="https://img.shields.io/badge/-Image%20Processing-333?style=flat-square" alt=""> | **Pillow**, **NumPy** |
+| <img src="https://img.shields.io/badge/-Frontend-333?style=flat-square" alt=""> | **HTML5**, **CSS3**, **JavaScript** |
+| <img src="https://img.shields.io/badge/-Deployment-333?style=flat-square" alt=""> | **Docker** (optional) |
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-```text
+```
 Fruite/
-│
-├── frontend/                                   # Frontend web application
-│   ├── index.html                              # Main UI
-│   ├── styles.css                              # Styling and layout
-│   └── script.js                               # API integration and dynamic updates
-│
-├── Dataset/                                    # Raw and processed image datasets
-├── transfer_model.keras                        # Pre-trained VGG16 model weights and architecture
-├── fruit-classification-using-cnn-and-vgg16.ipynb # Jupyter Notebook containing training and evaluation code
-├── main.py                                     # FastAPI application entry point
-├── requirements.txt                            # Python dependencies
-└── README.md                                   # Project documentation
+├── frontend/                          # Web application assets
+│   ├── index.html                     # Main user interface
+│   ├── styles.css                     # Layout and styling
+│   └── script.js                      # API integration & dynamic UI
+├── Dataset/                           # Raw and processed images
+├── transfer_model.keras               # Pre-trained VGG16 model
+├── fruit-classification-using-cnn-and-vgg16.ipynb  # Training notebook
+├── main.py                            # FastAPI server entry point
+├── requirements.txt                   # Python dependencies
+└── README.md
 ```
 
 ---
 
-## 💻 Setup and Installation
+## Model Architecture
 
-### Prerequisites
-- Python 3.8+
-- pip (Python Package Installer)
+The core classifier uses **VGG16** — a 16-layer convolutional neural network pre-trained on ImageNet. Transfer learning adapts these rich feature representations to our five-class fruit classification task, delivering strong accuracy with limited training data.
 
-### Installation Steps
+<table>
+  <tr>
+    <td align="center"><b>Input</b></td>
+    <td align="center"><b>Backbone</b></td>
+    <td align="center"><b>Head</b></td>
+    <td align="center"><b>Output</b></td>
+  </tr>
+  <tr>
+    <td>256×256×3 RGB</td>
+    <td>VGG16 (frozen)</td>
+    <td>Fine-tuned classifier</td>
+    <td>5 fruit classes</td>
+  </tr>
+</table>
 
-1. **Clone the repository / Navigate to the directory:**
-   ```bash
-   cd /path/to/Fruite
-   ```
-
-2. **Create a virtual environment (recommended):**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
-   ```
-
-3. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the FastAPI server:**
-   ```bash
-   python main.py
-   ```
-   *(Alternatively, run using uvicorn directly: `uvicorn main:app --host 0.0.0.0 --port 8000 --reload`)*
-
-5. **Access the application:**
-   - Web UI: `http://localhost:8000/`
-   - API Docs (Swagger): `http://localhost:8000/docs`
+A custom deserialization routine bypasses Keras 3 Sequential loading issues, ensuring reliable model deployment.
 
 ---
 
-## 🎓 Academic Thesis Relevance
-This project can serve as a robust practical implementation for a thesis covering:
-- **Computer Vision in Agriculture/Dietetics**: Automating the identification of food items and fetching dietary metadata.
-- **Transfer Learning Efficacy**: Demonstrating how VGG16 can be fine-tuned for specific multi-class classification tasks with limited data.
-- **Model Deployment**: Showcasing how to transition a trained model from a Jupyter Notebook environment into a production-ready RESTful API using FastAPI and a dynamic web frontend.
+## API Endpoints
+
+### `GET /health`
+
+Returns server status and model availability.
+
+```json
+{ "status": "healthy", "model_loaded": true }
+```
+
+### `POST /predict`
+
+Accepts a multipart image upload and returns the classification result.
+
+**Request:** `multipart/form-data` with an image file  
+**Response:**
+
+```json
+{
+  "class": "Apple",
+  "confidence": 0.97,
+  "all_scores": { "Apple": 0.97, "Banana": 0.01, "Grape": 0.01, "Mango": 0.01, "Strawberry": 0.00 },
+  "nutrition": {
+    "Calories": "~52 kcal",
+    "Carbohydrates": "~13.8 g",
+    "Dietary Fiber": "~2.4 g",
+    "Sugars": "~10.4 g",
+    "Protein": "~0.3 g",
+    "Fat": "~0.2 g",
+    "Water": "~86 g"
+  }
+}
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repo-url>
+cd Fruite
+
+# Create virtual environment
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Unix:   source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the server
+python main.py
+```
+
+### Access the Application
+
+| Service | URL |
+|---|---|
+| **Web UI** | `http://localhost:8000/` |
+| **Swagger Docs** | `http://localhost:8000/docs` |
+| **Health Check** | `http://localhost:8000/health` |
+
+---
+
+## Nutritional Reference
+
+Nutritional values are displayed per 100 g of edible fruit:
+
+| Nutrient | Apple | Banana | Grape | Mango | Strawberry |
+|---|---|---|---|---|---|
+| **Calories** | ~52 kcal | ~89 kcal | ~69 kcal | ~60 kcal | ~32 kcal |
+| **Carbs** | ~13.8 g | ~22.8 g | ~18.1 g | ~15.0 g | ~7.7 g |
+| **Fiber** | ~2.4 g | ~2.6 g | ~0.9 g | ~1.6 g | ~2.0 g |
+| **Sugars** | ~10.4 g | ~12.2 g | ~15.5 g | ~13.7 g | ~4.9 g |
+| **Protein** | ~0.3 g | ~1.1 g | ~0.7 g | ~0.8 g | ~0.7 g |
+| **Fat** | ~0.2 g | ~0.3 g | ~0.2 g | ~0.4 g | ~0.3 g |
+| **Water** | ~86 g | ~75 g | ~81 g | ~83 g | ~91 g |
+
+---
+
+## Academic Relevance
+
+- **Computer Vision in Agriculture** — Automated fruit identification for dietary tracking
+- **Transfer Learning** — Fine-tuning a pre-trained CNN for domain-specific classification
+- **Model Deployment** — End-to-end pipeline from Jupyter notebook to production API
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+---
+
+<p align="center">
+  <sub>Built with Python, FastAPI, TensorFlow, and modern web technologies.</sub>
+</p>
