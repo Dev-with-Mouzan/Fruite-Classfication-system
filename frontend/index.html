@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FruitLens AI - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Premium minimalist background -->
+    <div class="ambient-background"></div>
+
+    <main class="dashboard-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+                <h1>FruitLens AI</h1>
+            </div>
+            <p class="subtitle">Fruit Detection & Analysis</p>
+        </header>
+
+        <section class="main-panel">
+            <div class="upload-section">
+                <!-- Text outside box pattern -->
+                <div class="section-heading">
+                    <h2>Image Upload Sequence</h2>
+                    <p>Provide a high-resolution sample for VGG16 CNN classification.</p>
+                </div>
+
+                <div class="upload-box" id="drop-zone">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-indicator">
+                        <svg class="icon-upload" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div class="analysis-section hidden" id="preview-section">
+                <div class="section-heading">
+                    <h2>Subject Preview</h2>
+                    <p>Verify sample framing before executing classification.</p>
+                </div>
+
+                <div class="preview-card">
+                    <div class="image-frame">
+                        <img id="image-preview" src="" alt="Sample Preview">
+                    </div>
+
+                    <div class="controls-row">
+                        <button id="reset-btn" class="btn btn-outline">Discard</button>
+                        <button id="classify-btn" class="btn btn-solid">Execute Analysis</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="processing-section hidden" id="loading-section">
+                <div class="spinner-modern"></div>
+                <div class="processing-info">
+                    <h3>Processing Neural Pathways...</h3>
+                    <p>Extracting tensor features from the subject.</p>
+                </div>
+            </div>
+
+            <!-- Result State -->
+            <div class="result-section hidden" id="result-section">
+                <div class="section-heading">
+                    <h2>Inference Results</h2>
+                    <p>Classification output from the transfer model.</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card primary">
+                        <span class="metric-label">Predicted Class</span>
+                        <div class="metric-value highlight" id="result-class">--</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <span class="metric-label">Confidence</span>
+                        <div class="metric-value" id="result-confidence">--</div>
+                    </div>
+                </div>
+
+                <div class="bar-container" style="margin-bottom: 1.5rem;">
+                    <div class="bar-label">Match Probability</div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="metrics-fill"></div>
+                    </div>
+                </div>
+
+                <div class="section-heading" style="margin-bottom: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+                    <h2>Nutritional Breakdown (per 100g)</h2>
+                    <p>Estimated macro-nutrients and composition.</p>
+                </div>
+                
+                <div class="nutrition-grid" id="nutrition-container">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <div class="footer-content">
+                <span class="status-indicator online"></span>
+                <span>System Online</span>
+                <span class="separator">•</span>
+                <span>Model: VGG16 Transfer</span>
+            </div>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
