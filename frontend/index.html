@@ -1,124 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FruitLens AI - Dashboard</title>
+    <title>FruitLens — Visual Classifier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@450;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Premium minimalist background -->
-    <div class="ambient-background"></div>
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="#" class="topbar-brand">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-4 6-2-2-4-4-4-6a4 4 0 0 1 4-4z"/>
+                    <path d="M5 22h14"/><path d="M12 22v-8"/>
+                </svg>
+                <span>FruitLens</span>
+            </a>
 
-    <main class="dashboard-container">
-        <header class="app-header">
-            <div class="logo-container">
-                <div class="logo-icon"></div>
-                <h1>FruitLens AI</h1>
+            <div class="topbar-nav">
+                <a href="#" class="topbar-link active" data-page="classify">Classify</a>
+                <a href="#" class="topbar-link" data-page="gallery">Gallery</a>
+
             </div>
-            <p class="subtitle">Fruit Detection & Analysis</p>
-        </header>
 
-        <section class="main-panel">
-            <div class="upload-section">
-                <!-- Text outside box pattern -->
-                <div class="section-heading">
-                    <h2>Image Upload Sequence</h2>
-                    <p>Provide a high-resolution sample for VGG16 CNN classification.</p>
-                </div>
+            <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
 
-                <div class="upload-box" id="drop-zone">
+    <main>
+        <div class="page active" id="page-classify">
+            <header class="pagehead">
+                <h1 class="pagehead-title">Identify your fruit</h1>
+                <p class="pagehead-sub">Drop a photo and let the model tell you what it is</p>
+            </header>
+
+            <div class="card" id="upload-card">
+                <div class="dropzone" id="drop-zone">
                     <input type="file" id="file-input" accept="image/*" hidden>
-                    <div class="upload-indicator">
-                        <svg class="icon-upload" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                    <div class="dropzone-fig">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
                         </svg>
                     </div>
+                    <p class="dropzone-text">Drag &amp; drop your fruit photo here</p>
+                    <button class="btn-browse" type="button" id="browse-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Browse files
+                    </button>
+                    <p class="dropzone-hint">PNG, JPG, WEBP &middot; up to 10MB</p>
                 </div>
             </div>
 
-            <!-- Analysis Section -->
-            <div class="analysis-section hidden" id="preview-section">
-                <div class="section-heading">
-                    <h2>Subject Preview</h2>
-                    <p>Verify sample framing before executing classification.</p>
+            <div class="card hidden" id="preview-card">
+                <div class="card-head">
+                    <h2 class="card-head-title">Preview</h2>
                 </div>
-
-                <div class="preview-card">
-                    <div class="image-frame">
-                        <img id="image-preview" src="" alt="Sample Preview">
+                <div class="card-body">
+                    <div class="preview-box">
+                        <img id="image-preview" src="" alt="">
                     </div>
-
-                    <div class="controls-row">
-                        <button id="reset-btn" class="btn btn-outline">Discard</button>
-                        <button id="classify-btn" class="btn btn-solid">Execute Analysis</button>
+                    <div class="action-row">
+                        <button class="btn btn-ghost" id="reset-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Discard
+                        </button>
+                        <button class="btn btn-primary" id="classify-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Classify
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Loading State -->
-            <div class="processing-section hidden" id="loading-section">
-                <div class="spinner-modern"></div>
-                <div class="processing-info">
-                    <h3>Processing Neural Pathways...</h3>
-                    <p>Extracting tensor features from the subject.</p>
+            <div class="card hidden" id="loading-card">
+                <div class="card-body card-body--center">
+                    <div class="loader">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2" opacity="0.1"/>
+                            <circle class="loader-arc" cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="loader-text">
+                        <p class="loader-title">Running classification</p>
+                        <p class="loader-hint" id="loading-step">Loading VGG16 model &hellip;</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Result State -->
-            <div class="result-section hidden" id="result-section">
-                <div class="section-heading">
-                    <h2>Inference Results</h2>
-                    <p>Classification output from the transfer model.</p>
-                </div>
-
-                <div class="metrics-grid">
-                    <div class="metric-card primary">
-                        <span class="metric-label">Predicted Class</span>
-                        <div class="metric-value highlight" id="result-class">--</div>
+            <div class="card hidden" id="result-card">
+                <div class="card-body">
+                    <div class="result-top">
+                        <div class="result-pred">
+                            <span class="result-label">Prediction</span>
+                            <div class="result-name-row">
+                                <span class="result-icon" id="result-icon">🍎</span>
+                                <span class="result-name" id="result-class">&mdash;</span>
+                            </div>
+                        </div>
+                        <div class="result-ring" id="result-ring">
+                            <svg viewBox="0 0 120 120" width="120" height="120">
+                                <circle class="ring-bg" cx="60" cy="60" r="50" fill="none" stroke-width="8"/>
+                                <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="50" fill="none" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="ring-text">
+                                <span class="ring-pct" id="ring-pct">0%</span>
+                                <span class="ring-label">Confidence</span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="metric-card">
-                        <span class="metric-label">Confidence</span>
-                        <div class="metric-value" id="result-confidence">--</div>
-                    </div>
-                </div>
 
-                <div class="bar-container" style="margin-bottom: 1.5rem;">
-                    <div class="bar-label">Match Probability</div>
-                    <div class="progress-track">
-                        <div class="progress-fill" id="metrics-fill"></div>
+                    <div class="nutri">
+                        <div class="nutri-head">
+                            <h3 class="nutri-title">Nutrition &mdash; per 100g</h3>
+                            <span class="tag tag--green">Complete</span>
+                        </div>
+                        <div class="nutri-grid" id="nutrition-container"></div>
                     </div>
-                </div>
 
-                <div class="section-heading" style="margin-bottom: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
-                    <h2>Nutritional Breakdown (per 100g)</h2>
-                    <p>Estimated macro-nutrients and composition.</p>
-                </div>
-                
-                <div class="nutrition-grid" id="nutrition-container">
-                    <!-- Populated dynamically via JS -->
+                    <div class="result-actions">
+                        <button class="btn-browse" id="classify-new-btn" type="button">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Classify new
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <footer class="app-footer">
-            <div class="footer-content">
-                <span class="status-indicator online"></span>
-                <span>System Online</span>
-                <span class="separator">•</span>
-                <span>Model: VGG16 Transfer</span>
+        <div class="page" id="page-gallery">
+            <header class="pagehead">
+                <div class="pagehead-row">
+                    <div>
+                        <h1 class="pagehead-title">Gallery</h1>
+                        <p class="pagehead-sub">Your classified samples, saved locally</p>
+                    </div>
+                    <button class="btn btn-ghost btn-sm hidden" id="clear-gallery-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        Clear all
+                    </button>
+                </div>
+            </header>
+            <div id="gallery-container"></div>
+            <div class="empty hidden" id="gallery-empty">
+                <div class="empty-fig">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <p class="empty-title">Nothing here yet</p>
+                <p class="empty-sub">Classify a fruit and it&rsquo;ll show up here</p>
             </div>
-        </footer>
+        </div>
     </main>
+
+    <footer class="footer">
+        VGG16 &middot; 16-class dataset &middot; <span class="footer-dot"></span> Online
+    </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>
